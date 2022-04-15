@@ -40,7 +40,7 @@ namespace Enemy
 
         private void SpawnEnemy()
         {
-            Vector2 spawnPos = (Vector2) towerManager.CurrentTowerTransform.position + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+            Vector2 spawnPos = (Vector2) towerManager.CurrentTowerTransform.position + new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * spawnDistance;
             BaseEnemy enemy = Instantiate(enemies[Random.Range(0, enemies.Count)], spawnPos, Quaternion.identity);
             enemy.SetParams(baseSpeed, 10f, towerManager.CurrentTowerTransform);
             currentEnemies.Add(enemy);

@@ -12,7 +12,7 @@ namespace Enemy
 
         public void ProcessOnFixedUpdate()
         {
-            currentRigidbody2D.velocity = (currentTarget.position - transform.position).normalized * 0.2f;
+            currentRigidbody2D.velocity = (currentTarget.position - transform.position).normalized * currentSpeed;
         }
 
         public void SetParams(float speed, float hp, Transform target)
