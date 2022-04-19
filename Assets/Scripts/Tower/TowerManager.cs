@@ -8,20 +8,22 @@ namespace Tower
     public class TowerManager : MonoBehaviour, ITowerManager
     {
         [SerializeField] private Tower tower;
+        [SerializeField] private float towerHp;
 
         private IEnemyManager enemyManager;
         private IGameManager gameManager;
         
-        private Tower currentTower;
+        private ITower currentTower;
 
         public float CurrentTowerHp => currentTower.CurrentHp;
-        public Transform CurrentTowerTransform => currentTower.transform;
+        public Transform CurrentTowerTransform => currentTower.CurrentTransform;
 
         public void SetupBeans(GameContext context)
         {
             enemyManager = context.EnemyManagerInstance;
             gameManager = context.GameManagerInstance;
             currentTower = Instantiate(tower);
+            currentTower.SetupTower(towerHp);
             gameManager.IsGameStarted = true;
         }
 

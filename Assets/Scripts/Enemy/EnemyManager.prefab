@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 6853916204612012465, guid: ab44451076daaef4c921bc014ce0e45c, type: 3}
-  spawnRate: 0.2
-  spawnDistance: 4
-  baseSpeed: 5
+  spawnRate: 0.1
+  spawnDistance: 8
+  baseSpeed: 4

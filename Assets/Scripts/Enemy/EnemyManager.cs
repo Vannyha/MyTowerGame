@@ -17,7 +17,7 @@ namespace Enemy
         private ITowerManager towerManager;
         private IGameManager gameManager;
         
-        private List<BaseEnemy> currentEnemies = new List<BaseEnemy>();
+        private List<IEnemy> currentEnemies = new List<IEnemy>();
         private SlowUpdateProc slowUpdateProcess;
 
         public void SetupBeans(GameContext context)
@@ -35,7 +35,18 @@ namespace Enemy
             }
 
             slowUpdateProcess.ProceedOnFixedUpdate();
-            currentEnemies.ForEach(enemy => enemy.ProcessOnFixedUpdate());
+            for (int i = currentEnemies.Count - 1; i >= 0; i--)
+            {
+                IEnemy enemy = currentEnemies[i];
+                if (enemy.CurrentHp < 0f)
+                {
+                    currentEnemies.Remove(enemy);
+                    enemy.DestroyEntity();
+                    continue;
+                }
+                
+                enemy.ProcessOnFixedUpdate();
+            }
         }
 
         private void SpawnEnemy()
