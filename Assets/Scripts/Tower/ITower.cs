@@ -4,10 +4,9 @@ using UnityEngine;
 
 namespace Tower
 {
-    public interface ITower : IDamageable, IDestroyable
+    public interface ITower : IDamageable, IDestroyable, IPositioning
     {
         void SetupTower(float hp);
-        Transform CurrentTransform { get; }
         List<Transform> ModulePlaces { get; }
     }
 }

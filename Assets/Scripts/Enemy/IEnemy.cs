@@ -2,7 +2,7 @@
 
 namespace Enemy
 {
-    public interface IEnemy : IDamageable, IProcessable, IDestroyable
+    public interface IEnemy : IDamageable, IProcessable, IDestroyable, IPositioning
     {
     }
 }

@@ -14,6 +14,7 @@ namespace Enemy
         private float counterTest = 10f;
 
         public float CurrentHp => currentHp;
+        public Transform CurrentTransform => transform;
 
         public void ApplyChangeHp(float val)
         {
@@ -38,7 +39,6 @@ namespace Enemy
             currentSpeed = speed;
             currentHp = hp;
             currentTarget = target;
-            //currentRigidbody2D.velocity = (currentTarget.position - transform.position).normalized * currentSpeed;
         }
 
         private void OnCollisionEnter2D(Collision2D other)

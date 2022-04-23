@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Context;
 using Game;
 using Helpers.SlowUpdate;
@@ -25,6 +27,21 @@ namespace Enemy
             towerManager = context.TowerManagerInstance;
             gameManager = context.GameManagerInstance;
             slowUpdateProcess = new SlowUpdateProc(SpawnEnemy, spawnRate);
+        }
+
+        public bool GetClosestEnemyInFrustrum(out IEnemy enemy, Vector2 moduleRight, Vector2 modulePos, float dot)
+        {
+            IEnumerable<IEnemy> enemiesInFrustrum = currentEnemies.Where(obj => Vector2.Dot(moduleRight, ((Vector2) obj.CurrentTransform.position - modulePos).normalized) > dot);
+
+            if (!enemiesInFrustrum.Any())
+            {
+                enemy = null;
+                return false;
+            }
+
+            enemy = enemiesInFrustrum.OrderBy(obj =>
+                (obj.CurrentTransform.position - towerManager.CurrentTowerTransform.position).magnitude).First();
+            return true;
         }
 
         private void FixedUpdate()

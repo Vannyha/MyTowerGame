@@ -2,6 +2,7 @@
 using Context;
 using Enemy;
 using Game;
+using Modifiers;
 using Tower;
 using TowerModules.Modules;
 using TowerModules.Modules.Guns;
@@ -16,6 +17,7 @@ namespace TowerModules
         private IGameManager gameManager;
         private ITowerManager towerManager;
         private IEnemyManager enemyManager;
+        private IModifierManager modifierManager;
         
         private List<ITowerModule> currentModules = new List<ITowerModule>();
         public void SetupBeans(GameContext context)
@@ -23,12 +25,14 @@ namespace TowerModules
             gameManager = context.GameManagerInstance;
             towerManager = context.TowerManagerInstance;
             enemyManager = context.EnemyManagerInstance;
+            modifierManager = context.ModifierManagerInstance;
         }
 
         public void SetupModulesForTower()
         {
             towerManager.GetTowerModulesPlaces().ForEach(pl => 
-                currentModules.Add(Instantiate(modules[0], transform.position, transform.rotation)));
+                currentModules.Add(Instantiate(modules[0], pl.position, pl.rotation)));
+            currentModules.ForEach(module => module.SetupManagers(enemyManager, modifierManager));
         }
 
         private void FixedUpdate()
@@ -38,7 +42,7 @@ namespace TowerModules
                 return;
             }
             
-            
+            currentModules.ForEach(mod => mod.ProcessOnFixedUpdate());
         }
     }
 }

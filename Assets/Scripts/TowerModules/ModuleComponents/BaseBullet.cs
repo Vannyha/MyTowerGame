@@ -1,4 +1,5 @@
 ﻿using System;
+using Enemy;
 using UnityEngine;
 
 namespace TowerModules.ModuleComponents
@@ -18,11 +19,27 @@ namespace TowerModules.ModuleComponents
             currentDamage = damage;
             currentSpeed = speed;
             currentAimingStrength = aimingStrength;
+            currentRigidbody.velocity = (currentTarget.position - transform.position).normalized * currentSpeed;
         }
 
         private void Update()
         {
-            //currentRigidbody.velocity
+            if (currentTarget != null)
+            {
+                currentRigidbody.AddForce(
+                    ((Vector2) (currentTarget.position - transform.position).normalized * currentAimingStrength +
+                     currentRigidbody.velocity).normalized);
+                currentRigidbody.velocity = Vector2.ClampMagnitude(currentRigidbody.velocity, currentSpeed);
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.TryGetComponent(out IEnemy enemy))
+            {
+                enemy.ApplyChangeHp(-currentDamage * 10);
+                Destroy(gameObject);
+            }
         }
     }
 }
