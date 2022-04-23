@@ -1,21 +1,16 @@
 ﻿using Context;
 using Game;
-using Tower;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace UIManagers.ScreenStats
+namespace UIManagers.MainScreen
 {
-    public class ScreenStatsUIManager : MonoBehaviour, IScreenStatsUIManager
+    public class MainScreenUIManager : MonoBehaviour, IMainScreenUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
-        [SerializeField] private Text hpText;
-        
-        private ITowerManager towerManager;
+
         private IGameManager gameManager;
         public void SetupBeans(GameContext context)
         {
-            towerManager = context.TowerManagerInstance;
             gameManager = context.GameManagerInstance;
         }
         
@@ -28,15 +23,10 @@ namespace UIManagers.ScreenStats
         {
             gameObjectPanel.SetActive(false);
         }
-
-        private void Update()
+        
+        public void StartGame()
         {
-            if (!gameManager.IsGameStarted)
-            {
-                return;
-            }
-            
-            hpText.text = towerManager.CurrentTowerHp.ToString();
+            gameManager.StartGame();
         }
     }
 }

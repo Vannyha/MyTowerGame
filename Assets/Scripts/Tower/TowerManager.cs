@@ -1,4 +1,5 @@
-﻿using Context;
+﻿using System.Collections.Generic;
+using Context;
 using Enemy;
 using Game;
 using UnityEngine;
@@ -22,16 +23,30 @@ namespace Tower
         {
             enemyManager = context.EnemyManagerInstance;
             gameManager = context.GameManagerInstance;
-            currentTower = Instantiate(tower);
-            currentTower.SetupTower(towerHp);
-            gameManager.IsGameStarted = true;
         }
 
-        private void Update()
+        public void SetupTowerOnGame()
         {
+            currentTower = Instantiate(tower);
+            currentTower.SetupTower(towerHp);
+        }
+
+        public List<Transform> GetTowerModulesPlaces()
+        {
+            return tower.ModulePlaces;
+        }
+
+        private void FixedUpdate()
+        {
+            if (!gameManager.IsGameStarted)
+            {
+                return;
+            }
+            
             if (currentTower.CurrentHp < 0)
             {
-                gameManager.IsGameStarted = false;
+                gameManager.StopGame();
+                currentTower.DestroyEntity();
             }
         }
     }

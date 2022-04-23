@@ -31,6 +31,11 @@ namespace Enemy
         {
             if (!gameManager.IsGameStarted)
             {
+                if (currentEnemies.Count != 0)
+                {
+                    currentEnemies.ForEach(enemy => enemy.DestroyEntity());
+                    currentEnemies.Clear();
+                }
                 return;
             }
 

@@ -135,3 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentRigidbody2D: {fileID: 6436658296525355281}
+  particleSystem: {fileID: 761655407498382664, guid: c4b5b54dcaf624b4793f8fcfb8deaf03, type: 3}

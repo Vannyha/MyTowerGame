@@ -2,7 +2,7 @@
 
 namespace UIManagers.ScreenStats
 {
-    public interface IScreenStatsUIManager : IBean
+    public interface IScreenStatsUIManager : IPanelManager, IBean
     {
         
     }

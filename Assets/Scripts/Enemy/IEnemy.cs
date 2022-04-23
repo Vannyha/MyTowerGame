@@ -2,9 +2,7 @@
 
 namespace Enemy
 {
-    public interface IEnemy : IDamageable
+    public interface IEnemy : IDamageable, IProcessable, IDestroyable
     {
-        void DestroyEntity();
-        void ProcessOnFixedUpdate();
     }
 }

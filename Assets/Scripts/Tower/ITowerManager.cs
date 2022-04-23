@@ -1,4 +1,5 @@
-﻿using Context;
+﻿using System.Collections.Generic;
+using Context;
 using UnityEngine;
 
 namespace Tower
@@ -7,5 +8,7 @@ namespace Tower
     {
         float CurrentTowerHp { get; }
         Transform CurrentTowerTransform { get; }
+        void SetupTowerOnGame();
+        List<Transform> GetTowerModulesPlaces();
     }
 }

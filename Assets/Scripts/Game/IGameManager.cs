@@ -4,6 +4,8 @@ namespace Game
 {
     public interface IGameManager : IBean
     {
-        bool IsGameStarted { get; set; }
+        bool IsGameStarted { get; }
+        void StartGame();
+        void StopGame();
     }
 }
