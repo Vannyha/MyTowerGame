@@ -1,7 +1,9 @@
 ﻿using Context;
 using Tower;
 using TowerModules;
+using UIManagers.BottomPanel;
 using UIManagers.MainScreen;
+using UIManagers.ResultsPanel;
 using UIManagers.ScreenStats;
 using UnityEngine;
 
@@ -13,6 +15,8 @@ namespace Game
         private IMainScreenUIManager mainScreenUIManager;
         private IScreenStatsUIManager screenStatsUIManager;
         private ITowerModulesManager towerModulesManager;
+        private IBottomPanelUIManager bottomPanelUIManager;
+        private IResultsPanelUIManager resultsPanelUIManager;
 
         private bool isGameStarted = false;
 
@@ -24,7 +28,10 @@ namespace Game
             mainScreenUIManager = context.MainScreenUIManagerInstance;
             screenStatsUIManager = context.ScreenStatsUIManagerInstance;
             towerModulesManager = context.TowerModulesManagerInstance;
-            mainScreenUIManager.OpenPanel();
+            bottomPanelUIManager = context.BottomPanelUIManagerInstance;
+            resultsPanelUIManager = context.ResultsPanelUIManagerInstance;
+            bottomPanelUIManager.OpenMainPreset();
+            bottomPanelUIManager.OpenPanel();
         }
 
         public void StartGame()
@@ -38,12 +45,22 @@ namespace Game
             towerModulesManager.SetupModulesForTower();
             screenStatsUIManager.OpenPanel();
             mainScreenUIManager.ClosePanel();
+            bottomPanelUIManager.ClosePanel();
             isGameStarted = true;
+        }
+
+        public void FinishGame()
+        {
+            resultsPanelUIManager.ClosePanel();
+            bottomPanelUIManager.OpenPanel();
+            bottomPanelUIManager.OpenMainPreset();
+            screenStatsUIManager.ClosePanel();
         }
 
         public void StopGame()
         {
             isGameStarted = false;
+            resultsPanelUIManager.OpenPanel();
         }
     }
 }

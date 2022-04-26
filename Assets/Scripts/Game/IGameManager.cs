@@ -7,5 +7,6 @@ namespace Game
         bool IsGameStarted { get; }
         void StartGame();
         void StopGame();
+        void FinishGame();
     }
 }

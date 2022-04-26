@@ -5,8 +5,13 @@ using Game;
 using Modifiers;
 using Tower;
 using TowerModules;
+using UIManagers.BottomPanel;
+using UIManagers.LaboratoryScreen;
 using UIManagers.MainScreen;
+using UIManagers.ResultsPanel;
 using UIManagers.ScreenStats;
+using UIManagers.ShopScreen;
+using UIManagers.WorkshopScreen;
 using UnityEngine;
 
 namespace Context
@@ -20,6 +25,11 @@ namespace Context
         [SerializeField] private TowerModulesManager towerModulesManager;
         [SerializeField] private ScreenStatsUIManager screenStatsUIManager;
         [SerializeField] private MainScreenUIManager mainScreenUIManager;
+        [SerializeField] private WorkshopScreenUIManager workshopScreenUIManager;
+        [SerializeField] private ShopScreenUIManager shopScreenUIManager;
+        [SerializeField] private ResultsPanelUIManager resultsPanelUIManager;
+        [SerializeField] private LaboratoryScreenUIManager laboratoryScreenUIManager;
+        [SerializeField] private BottomPanelUIManager bottomPanelUIManager;
 
         public ITowerManager TowerManagerInstance => towerManager;
         public IEnemyManager EnemyManagerInstance => enemyManager;
@@ -28,6 +38,11 @@ namespace Context
         public IMainScreenUIManager MainScreenUIManagerInstance => mainScreenUIManager;
         public ITowerModulesManager TowerModulesManagerInstance => towerModulesManager;
         public IModifierManager ModifierManagerInstance => modifierManager;
+        public IWorkshopScreenUIManager WorkshopScreenUIManagerInstance => workshopScreenUIManager;
+        public IShopScreenUIManager ShopScreenUIManagerInstance => shopScreenUIManager;
+        public IResultsPanelUIManager ResultsPanelUIManagerInstance => resultsPanelUIManager;
+        public ILaboratoryScreenUIManager LaboratoryScreenUIManagerInstance => laboratoryScreenUIManager;
+        public IBottomPanelUIManager BottomPanelUIManagerInstance => bottomPanelUIManager;
 
         public void Awake()
         {

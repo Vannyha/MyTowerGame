@@ -18,6 +18,7 @@ namespace Tower
 
         public float CurrentHp => currentHp;
         public Transform CurrentTransform => transform;
+        public GameObject CurrentGameObject => gameObject;
         public List<Transform> ModulePlaces => modulePlaces;
 
         public void SetupTower(float hp)
@@ -34,6 +35,7 @@ namespace Tower
         {
             towerGameObject.SetActive(false);
             explodeEffect.Play();
+            Destroy(gameObject, explodeEffect.main.duration);
         }
         
         private void OnCollisionEnter2D(Collision2D other)

@@ -15,6 +15,7 @@ namespace Enemy
 
         public float CurrentHp => currentHp;
         public Transform CurrentTransform => transform;
+        public GameObject CurrentGameObject => gameObject;
 
         public void ApplyChangeHp(float val)
         {
