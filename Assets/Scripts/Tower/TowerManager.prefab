@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 3439023433274526110, guid: 1f657ca2ebf289b46ac49fc7faf881a4, type: 3}
-  towerHp: 10000
+  towerHp: 200

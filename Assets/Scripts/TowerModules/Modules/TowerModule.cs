@@ -8,6 +8,10 @@ namespace TowerModules.Modules
     {
         protected IEnemyManager enemyManager;
         protected IModifierManager modifierManager;
+
+        public Transform CurrentTransform => transform;
+        public GameObject CurrentGameObject => gameObject;
+        
         public virtual void ProcessOnFixedUpdate()
         {
         }
@@ -16,11 +20,15 @@ namespace TowerModules.Modules
         {
             enemyManager = eManager;
             modifierManager = mManager;
-            SetupBasics();
         }
 
-        protected virtual void SetupBasics()
+        public virtual void SetupTowerFromContainer(TowerModuleContainer container)
         {
+        }
+
+        public void DestroyEntity()
+        {
+            Destroy(gameObject);
         }
     }
 }

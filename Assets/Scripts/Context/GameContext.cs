@@ -2,7 +2,10 @@
 using System.Linq;
 using Enemy;
 using Game;
+using GameScripts;
+using JsonFs;
 using Modifiers;
+using Save;
 using Tower;
 using TowerModules;
 using UIManagers.BottomPanel;
@@ -19,6 +22,8 @@ namespace Context
     public class GameContext : MonoBehaviour
     {
         [SerializeField] private GameManager gameManager;
+        [SerializeField] private JsonFsManager jsonFsManager;
+        [SerializeField] private SaveManager saveManager;
         [SerializeField] private TowerManager towerManager;
         [SerializeField] private EnemyManager enemyManager;
         [SerializeField] private ModifierManager modifierManager;
@@ -43,6 +48,8 @@ namespace Context
         public IResultsPanelUIManager ResultsPanelUIManagerInstance => resultsPanelUIManager;
         public ILaboratoryScreenUIManager LaboratoryScreenUIManagerInstance => laboratoryScreenUIManager;
         public IBottomPanelUIManager BottomPanelUIManagerInstance => bottomPanelUIManager;
+        public IJsonFsManager JsonFsManagerInstance => jsonFsManager;
+        public ISaveManager SaveManagerInstance => saveManager;
 
         public void Awake()
         {

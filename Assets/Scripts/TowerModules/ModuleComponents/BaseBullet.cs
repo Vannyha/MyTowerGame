@@ -1,5 +1,4 @@
-﻿using System;
-using Enemy;
+﻿using Enemy;
 using UnityEngine;
 
 namespace TowerModules.ModuleComponents
@@ -26,10 +25,9 @@ namespace TowerModules.ModuleComponents
         {
             if (currentTarget != null)
             {
-                currentRigidbody.AddForce(
+                currentRigidbody.velocity =
                     ((Vector2) (currentTarget.position - transform.position).normalized * currentAimingStrength +
-                     currentRigidbody.velocity).normalized);
-                currentRigidbody.velocity = Vector2.ClampMagnitude(currentRigidbody.velocity, currentSpeed);
+                     currentRigidbody.velocity).normalized * currentSpeed;
             }
         }
 
@@ -37,7 +35,7 @@ namespace TowerModules.ModuleComponents
         {
             if (other.gameObject.TryGetComponent(out IEnemy enemy))
             {
-                enemy.ApplyChangeHp(-currentDamage * 10);
+                enemy.ApplyChangeHp(0.1f);
                 Destroy(gameObject);
             }
         }

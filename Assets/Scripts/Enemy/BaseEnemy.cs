@@ -31,7 +31,7 @@ namespace Enemy
 
         public void ProcessOnFixedUpdate()
         {
-            currentRigidbody2D.AddForce((currentTarget.position - transform.position).normalized);
+            currentRigidbody2D.AddForce((currentTarget.position - transform.position).normalized * currentSpeed);
             currentRigidbody2D.velocity = Vector2.ClampMagnitude(currentRigidbody2D.velocity, currentSpeed);
         }
 

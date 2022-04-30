@@ -1,6 +1,7 @@
 ﻿using Context;
 using Tower;
 using TowerModules;
+using TowerModules.Modules;
 using UIManagers.BottomPanel;
 using UIManagers.MainScreen;
 using UIManagers.ResultsPanel;
@@ -55,12 +56,18 @@ namespace Game
             bottomPanelUIManager.OpenPanel();
             bottomPanelUIManager.OpenMainPreset();
             screenStatsUIManager.ClosePanel();
+            towerModulesManager.AddNewTowerModule(new TowerModuleContainer
+            {
+                TowerType = TowerModuleType.MachineGun, AttackSpeed = 1f, Damage = 5f, DotRange = 0.4f,
+                AimingStrength = 1, ProjectileSpeed = 2
+            });
         }
 
         public void StopGame()
         {
             isGameStarted = false;
             resultsPanelUIManager.OpenPanel();
+            towerModulesManager.StopActions();
         }
     }
 }
