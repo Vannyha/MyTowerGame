@@ -1,11 +1,14 @@
 ﻿using Context;
+using Tower;
 using UnityEngine;
 
 namespace UIManagers.ShopScreen
 {
-    public class ShopScreenUIManager : MonoBehaviour, IShopScreenUIManager
+    public partial class ShopScreenUIManager : MonoBehaviour, IShopScreenUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
+
+        private ITowerManager towerManager;
 
         public void OpenPanel()
         {
@@ -19,7 +22,7 @@ namespace UIManagers.ShopScreen
 
         public void SetupBeans(GameContext context)
         {
-            
+            towerManager = context.TowerManagerInstance;
         }
     }
 }
