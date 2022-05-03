@@ -41,6 +41,11 @@ namespace Game
             {
                 return;
             }
+
+            if (!towerManager.IsAnyTowerChoosed)
+            {
+                return;
+            }
             
             towerManager.SetupTowerOnGame();
             towerModulesManager.SetupModulesForTower();

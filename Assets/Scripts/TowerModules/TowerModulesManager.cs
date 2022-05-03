@@ -6,6 +6,7 @@ using Enemy;
 using Game;
 using GameScripts;
 using Modifiers;
+using Save;
 using Tower;
 using TowerModules.Modules;
 using UnityEngine;
@@ -31,14 +32,14 @@ namespace TowerModules
             towerManager = context.TowerManagerInstance;
             enemyManager = context.EnemyManagerInstance;
             modifierManager = context.ModifierManagerInstance;
-            List<TowerModuleContainer> tempList = saveManager.LoadValue("TowerContainers", new List<TowerModuleContainer>
+            List<TowerModuleContainer> tempList = saveManager.LoadValue(SaveKeys.CurrentModules, new List<TowerModuleContainer>
             {
                 new TowerModuleContainer {TowerType = TowerModuleType.MachineGun, AttackSpeed = 1f, Damage = 5f, DotRange = 0.4f, AimingStrength = 1, ProjectileSpeed = 2},
                 new TowerModuleContainer {TowerType = TowerModuleType.MachineGun, AttackSpeed = 1f, Damage = 5f, DotRange = 0.4f, AimingStrength = 1, ProjectileSpeed = 2},
             });
             
             containers = new ObservableCollection<TowerModuleContainer>(tempList);
-            containers.CollectionChanged += (sender, args) => saveManager.SaveValue("TowerContainers", containers.ToList());
+            containers.CollectionChanged += (sender, args) => saveManager.SaveValue(SaveKeys.CurrentModules, containers.ToList());
         }
 
         public void SetupModulesForTower()
