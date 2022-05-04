@@ -2,6 +2,5 @@
 {
     public interface IBean
     {
-        void SetupBeans(GameContext context);
     }
 }

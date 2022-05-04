@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace Enemy
 {
+    [Singleton]
     public class EnemyManager : MonoBehaviour, IEnemyManager
     {
         [SerializeField] private List<BaseEnemy> enemies;
@@ -16,16 +17,14 @@ namespace Enemy
         [SerializeField] private float spawnDistance;
         [SerializeField] private float baseSpeed;
 
-        private ITowerManager towerManager;
-        private IGameManager gameManager;
+        [Inject] private ITowerManager towerManager;
+        [Inject] private IGameManager gameManager;
         
         private List<IEnemy> currentEnemies = new List<IEnemy>();
         private SlowUpdateProc slowUpdateProcess;
 
-        public void SetupBeans(GameContext context)
+        public void Init()
         {
-            towerManager = context.TowerManagerInstance;
-            gameManager = context.GameManagerInstance;
             slowUpdateProcess = new SlowUpdateProc(SpawnEnemy, spawnRate);
         }
 

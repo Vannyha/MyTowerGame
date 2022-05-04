@@ -6,19 +6,15 @@ using UnityEngine.UI;
 
 namespace UIManagers.ScreenStats
 {
+    [Singleton]
     public class ScreenStatsUIManager : MonoBehaviour, IScreenStatsUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
         [SerializeField] private Text hpText;
         
-        private ITowerManager towerManager;
-        private IGameManager gameManager;
-        public void SetupBeans(GameContext context)
-        {
-            towerManager = context.TowerManagerInstance;
-            gameManager = context.GameManagerInstance;
-        }
-        
+        [Inject] private ITowerManager towerManager;
+        [Inject] private IGameManager gameManager;
+
         public void OpenPanel()
         {
             gameObjectPanel.SetActive(true);

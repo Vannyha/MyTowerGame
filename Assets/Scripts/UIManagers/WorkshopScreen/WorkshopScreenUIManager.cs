@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UIManagers.WorkshopScreen
 {
+    [Singleton]
     public class WorkshopScreenUIManager : MonoBehaviour, IWorkshopScreenUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
@@ -15,11 +16,6 @@ namespace UIManagers.WorkshopScreen
         public void ClosePanel()
         {
             gameObjectPanel.SetActive(false);
-        }
-
-        public void SetupBeans(GameContext context)
-        {
-            
         }
     }
 }

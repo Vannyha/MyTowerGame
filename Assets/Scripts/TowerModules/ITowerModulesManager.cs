@@ -3,7 +3,7 @@ using TowerModules.Modules;
 
 namespace TowerModules
 {
-    public interface ITowerModulesManager : IBean
+    public interface ITowerModulesManager : IInitResolve
     {
         void SetupModulesForTower();
         void AddNewTowerModule(TowerModuleContainer container);

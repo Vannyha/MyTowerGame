@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Tower
 {
-    public interface ITowerManager : IBean
+    public interface ITowerManager : IInitResolve
     {
         float CurrentTowerHp { get; }
         Transform CurrentTowerTransform { get; }

@@ -6,11 +6,12 @@ using UnityEngine;
 
 namespace UIManagers.ResultsPanel
 {
+    [Singleton]
     public class ResultsPanelUIManager : MonoBehaviour, IResultsPanelUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
         
-        private IGameManager gameManager;
+        [Inject] private IGameManager gameManager;
 
         public void OpenPanel()
         {
@@ -25,11 +26,6 @@ namespace UIManagers.ResultsPanel
         public void ReturnToMainScreen()
         {
             gameManager.FinishGame();
-        }
-
-        public void SetupBeans(GameContext context)
-        {
-            gameManager = context.GameManagerInstance;
         }
     }
 }

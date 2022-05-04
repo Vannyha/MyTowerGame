@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add0e52b9a854400bb06920cec960b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 3439023433274526110, guid: 1f657ca2ebf289b46ac49fc7faf881a4, type: 3}
+  database: {fileID: 11400000, guid: 48333f00b6741d046b29ba36594985ab, type: 2}
   towerHp: 200

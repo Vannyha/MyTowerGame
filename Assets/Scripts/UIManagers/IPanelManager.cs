@@ -1,6 +1,8 @@
-﻿namespace UIManagers
+﻿using Context;
+
+namespace UIManagers
 {
-    public interface IPanelManager
+    public interface IPanelManager : IBean
     {
         void OpenPanel();
         void ClosePanel();

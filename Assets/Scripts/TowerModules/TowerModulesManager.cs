@@ -13,25 +13,21 @@ using UnityEngine;
 
 namespace TowerModules
 {
+    [Singleton][ResolveAfter(typeof(ISaveManager))]
     public class TowerModulesManager : MonoBehaviour, ITowerModulesManager
     {
         [SerializeField] private TowerModuleDatabase database;
 
-        private IGameManager gameManager;
-        private ITowerManager towerManager;
-        private IEnemyManager enemyManager;
-        private IModifierManager modifierManager;
-        private ISaveManager saveManager;
+        [Inject] private IGameManager gameManager;
+        [Inject] private ITowerManager towerManager;
+        [Inject] private IEnemyManager enemyManager;
+        [Inject] private IModifierManager modifierManager;
+        [Inject] private ISaveManager saveManager;
 
         private ObservableCollection<TowerModuleContainer> containers;
         private List<ITowerModule> currentModulesGame = new List<ITowerModule>();
-        public void SetupBeans(GameContext context)
+        public void Init()
         {
-            saveManager = context.SaveManagerInstance;
-            gameManager = context.GameManagerInstance;
-            towerManager = context.TowerManagerInstance;
-            enemyManager = context.EnemyManagerInstance;
-            modifierManager = context.ModifierManagerInstance;
             List<TowerModuleContainer> tempList = saveManager.LoadValue(SaveKeys.CurrentModules, new List<TowerModuleContainer>
             {
                 new TowerModuleContainer {TowerType = TowerModuleType.MachineGun, AttackSpeed = 1f, Damage = 5f, DotRange = 0.4f, AimingStrength = 1, ProjectileSpeed = 2},

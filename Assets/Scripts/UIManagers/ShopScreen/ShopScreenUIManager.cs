@@ -4,11 +4,12 @@ using UnityEngine;
 
 namespace UIManagers.ShopScreen
 {
+    [Singleton]
     public partial class ShopScreenUIManager : MonoBehaviour, IShopScreenUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
 
-        private ITowerManager towerManager;
+        [Inject] private ITowerManager towerManager;
 
         public void OpenPanel()
         {
@@ -18,11 +19,6 @@ namespace UIManagers.ShopScreen
         public void ClosePanel()
         {
             gameObjectPanel.SetActive(false);
-        }
-
-        public void SetupBeans(GameContext context)
-        {
-            towerManager = context.TowerManagerInstance;
         }
     }
 }

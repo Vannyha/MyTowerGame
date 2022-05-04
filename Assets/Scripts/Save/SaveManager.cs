@@ -8,9 +8,10 @@ using UnityEngine;
 
 namespace Save
 {
+    [Singleton]
     public class SaveManager : MonoBehaviour, ISaveManager
     {
-        private IJsonFsManager jsonFsManager;
+        [Inject] private IJsonFsManager jsonFsManager;
         
         private const float SerializationCountdown = 30f;
         private const float SerializationCallBias = 1f;
@@ -24,9 +25,8 @@ namespace Save
         private bool _forceSave;
         private string _pullKey = "save";
         
-        public void SetupBeans(GameContext context)
+        public void Init()
         {
-            jsonFsManager = context.JsonFsManagerInstance;
             _forceSave = false;
             PullKeys();
             PullPrefs();

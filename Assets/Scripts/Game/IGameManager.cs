@@ -2,7 +2,7 @@
 
 namespace Game
 {
-    public interface IGameManager : IBean
+    public interface IGameManager : IInitResolve
     {
         bool IsGameStarted { get; }
         void StartGame();

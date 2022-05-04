@@ -4,16 +4,13 @@ using UnityEngine;
 
 namespace UIManagers.MainScreen
 {
+    [Singleton]
     public class MainScreenUIManager : MonoBehaviour, IMainScreenUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
 
-        private IGameManager gameManager;
-        public void SetupBeans(GameContext context)
-        {
-            gameManager = context.GameManagerInstance;
-        }
-        
+        [Inject] private IGameManager gameManager;
+
         public void OpenPanel()
         {
             gameObjectPanel.SetActive(true);

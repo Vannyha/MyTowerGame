@@ -8,14 +8,15 @@ using UnityEngine;
 
 namespace Tower
 {
+    [Singleton][ResolveAfter(typeof(ISaveManager))]
     public class TowerManager : MonoBehaviour, ITowerManager
     {
         [SerializeField] private TowerDatabase database;
         [SerializeField] private float towerHp;
 
-        private IEnemyManager enemyManager;
-        private IGameManager gameManager;
-        private ISaveManager saveManager;
+        [Inject] private IEnemyManager enemyManager;
+        [Inject] private IGameManager gameManager;
+        [Inject] private ISaveManager saveManager;
         
         private ITower currentTower;
         private TowerType choosedTower;
@@ -24,12 +25,9 @@ namespace Tower
         public Transform CurrentTowerTransform => currentTower.CurrentTransform;
         public bool IsAnyTowerChoosed => choosedTower != TowerType.None;
 
-        public void SetupBeans(GameContext context)
+        public void Init()
         {
-            enemyManager = context.EnemyManagerInstance;
-            gameManager = context.GameManagerInstance;
-            saveManager = context.SaveManagerInstance;
-            choosedTower = saveManager.LoadValue(SaveKeys.CurrentTower, TowerType.None);
+            choosedTower = saveManager.LoadValue(SaveKeys.CurrentTower, TowerType.Hexa);
         }
 
         public void SetupTowerOnGame()

@@ -4,12 +4,9 @@ using UnityEngine;
 
 namespace JsonFs
 {
+    [Singleton]
     public class JsonFsManager : MonoBehaviour, IJsonFsManager
     {
-        public void SetupBeans(GameContext context)
-        {
-        }
-        
         public string Serialize(object obj)
         {
             fsSerializer serializer = new fsSerializer();

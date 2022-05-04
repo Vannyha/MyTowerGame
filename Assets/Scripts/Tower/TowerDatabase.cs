@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Tower
 {
+    [CreateAssetMenu(fileName = "Tower Database", menuName = "Databases/Tower Database", order = 0)]
     public class TowerDatabase : ScriptableObject
     {
         [SerializeField] private List<TowerDatabaseSlot> towerInfos;

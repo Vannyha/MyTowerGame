@@ -10,27 +10,22 @@ using UnityEngine;
 
 namespace Game
 {
+    [Singleton]
     public class GameManager : MonoBehaviour, IGameManager
     {
-        private ITowerManager towerManager;
-        private IMainScreenUIManager mainScreenUIManager;
-        private IScreenStatsUIManager screenStatsUIManager;
-        private ITowerModulesManager towerModulesManager;
-        private IBottomPanelUIManager bottomPanelUIManager;
-        private IResultsPanelUIManager resultsPanelUIManager;
+        [Inject] private ITowerManager towerManager;
+        [Inject] private IMainScreenUIManager mainScreenUIManager;
+        [Inject] private IScreenStatsUIManager screenStatsUIManager;
+        [Inject] private ITowerModulesManager towerModulesManager;
+        [Inject] private IBottomPanelUIManager bottomPanelUIManager;
+        [Inject] private IResultsPanelUIManager resultsPanelUIManager;
 
         private bool isGameStarted = false;
 
         public bool IsGameStarted => isGameStarted;
 
-        public void SetupBeans(GameContext context)
+        public void Init()
         {
-            towerManager = context.TowerManagerInstance;
-            mainScreenUIManager = context.MainScreenUIManagerInstance;
-            screenStatsUIManager = context.ScreenStatsUIManagerInstance;
-            towerModulesManager = context.TowerModulesManagerInstance;
-            bottomPanelUIManager = context.BottomPanelUIManagerInstance;
-            resultsPanelUIManager = context.ResultsPanelUIManagerInstance;
             bottomPanelUIManager.OpenMainPreset();
             bottomPanelUIManager.OpenPanel();
         }

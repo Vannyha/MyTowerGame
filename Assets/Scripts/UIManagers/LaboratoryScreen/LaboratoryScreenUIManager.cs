@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace UIManagers.LaboratoryScreen
 {
+    [Singleton]
     public class LaboratoryScreenUIManager : MonoBehaviour, ILaboratoryScreenUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
@@ -15,11 +16,6 @@ namespace UIManagers.LaboratoryScreen
         public void ClosePanel()
         {
             gameObjectPanel.SetActive(false);
-        }
-
-        public void SetupBeans(GameContext context)
-        {
-            
         }
     }
 }

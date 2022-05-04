@@ -2,7 +2,7 @@
 
 namespace UIManagers.BottomPanel
 {
-    public interface IBottomPanelUIManager : IPanelManager, IBean
+    public interface IBottomPanelUIManager : IPanelManager, IInitResolve
     {
         public void OpenMainPreset();
     }

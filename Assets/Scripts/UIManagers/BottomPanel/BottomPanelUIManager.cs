@@ -7,22 +7,20 @@ using UnityEngine;
 
 namespace UIManagers.BottomPanel
 {
+    [Singleton]
     public class BottomPanelUIManager : MonoBehaviour, IBottomPanelUIManager
     {
         [SerializeField] private GameObject gameObjectPanel;
 
-        private ILaboratoryScreenUIManager laboratoryScreenUIManager;
-        private IMainScreenUIManager mainScreenUIManager;
-        private IShopScreenUIManager shopScreenUIManager;
-        private IWorkshopScreenUIManager workshopScreenUIManager;
+        [Inject] private ILaboratoryScreenUIManager laboratoryScreenUIManager;
+        [Inject] private IMainScreenUIManager mainScreenUIManager;
+        [Inject] private IShopScreenUIManager shopScreenUIManager;
+        [Inject] private IWorkshopScreenUIManager workshopScreenUIManager;
 
-        public void SetupBeans(GameContext context)
+        public void Init()
         {
-            laboratoryScreenUIManager = context.LaboratoryScreenUIManagerInstance;
-            mainScreenUIManager = context.MainScreenUIManagerInstance;
-            shopScreenUIManager = context.ShopScreenUIManagerInstance;
-            workshopScreenUIManager = context.WorkshopScreenUIManagerInstance;
             OpenMainPreset();
+            OpenPanel();
         }
         
         public void OpenPanel()
