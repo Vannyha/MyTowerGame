@@ -27,7 +27,7 @@ namespace Tower
 
         public void Init()
         {
-            choosedTower = saveManager.LoadValue(SaveKeys.CurrentTower, TowerType.Hexa);
+            choosedTower = saveManager.LoadValue(SaveKeys.CurrentTower, TowerType.Trio);
         }
 
         public void SetupTowerOnGame()

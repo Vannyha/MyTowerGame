@@ -10,7 +10,12 @@ namespace UIManagers.ShopScreen
         [SerializeField] private GameObject gameObjectPanel;
 
         [Inject] private ITowerManager towerManager;
-
+        
+        public void Init()
+        {
+            InitTowersPics();
+        }
+        
         public void OpenPanel()
         {
             gameObjectPanel.SetActive(true);

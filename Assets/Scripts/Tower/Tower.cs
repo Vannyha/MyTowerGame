@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Enemy;
-using TowerModules;
 using TowerModules.Modules;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace Tower
     public class Tower : MonoBehaviour, ITower
     {
         [SerializeField] private List<Transform> modulePlaces;
-        [SerializeField] private GameObject towerGameObject;
+        [SerializeField] private SpriteRenderer towerSpriteObject;
         [SerializeField] private ParticleSystem explodeEffect;
 
         private List<ITowerModule> currentModules;
@@ -33,7 +32,7 @@ namespace Tower
 
         public void DestroyEntity()
         {
-            towerGameObject.SetActive(false);
+            towerSpriteObject.enabled = false;
             explodeEffect.Play();
             Destroy(gameObject, explodeEffect.main.duration);
         }

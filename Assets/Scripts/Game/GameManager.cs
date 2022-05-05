@@ -24,12 +24,6 @@ namespace Game
 
         public bool IsGameStarted => isGameStarted;
 
-        public void Init()
-        {
-            bottomPanelUIManager.OpenMainPreset();
-            bottomPanelUIManager.OpenPanel();
-        }
-
         public void StartGame()
         {
             if (isGameStarted)

@@ -2,7 +2,7 @@
 
 namespace UIManagers.ShopScreen
 {
-    public interface IShopScreenUIManager : IPanelManager, IBean
+    public interface IShopScreenUIManager : IPanelManager, IInitResolve
     {
         
     }

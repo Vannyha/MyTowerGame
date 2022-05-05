@@ -35,7 +35,7 @@ namespace TowerModules.ModuleComponents
         {
             if (other.gameObject.TryGetComponent(out IEnemy enemy))
             {
-                enemy.ApplyChangeHp(0.1f);
+                enemy.ApplyChangeHp(-6f);
                 Destroy(gameObject);
             }
         }

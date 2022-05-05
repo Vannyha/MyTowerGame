@@ -31,5 +31,12 @@ namespace UIManagers.UIHelpers
             currentButton.interactable = value;
             lockPicture.gameObject.SetActive(!value);
         }
+        
+        public void SetParentAndResetTransform(Transform parent)
+        {
+            transform.SetParent(parent);
+            transform.localPosition = Vector3.zero;
+            transform.localScale = Vector3.one;
+        }
     }
 }

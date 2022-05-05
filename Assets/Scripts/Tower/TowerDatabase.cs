@@ -14,6 +14,11 @@ namespace Tower
         {
             return towerInfos.First(t => t.Type == type).Tower;
         }
+
+        public Sprite GetTowerSpriteByType(TowerType type)
+        {
+            return towerInfos.First(t => t.Type == type).SpriteForUI;
+        }
     }
     
     [Serializable]
@@ -21,9 +26,11 @@ namespace Tower
     {
         [SerializeField] private Tower tower;
         [SerializeField] private TowerType type;
+        [SerializeField] private Sprite spriteForUI;
 
         public Tower Tower => tower;
         public TowerType Type => type;
+        public Sprite SpriteForUI => spriteForUI;
     }
 
     public enum TowerType
@@ -34,7 +41,7 @@ namespace Tower
         Quad = 4,
         Penta = 5,
         Hexa = 6,
-        Hepta = 7,
-        Octa = 8,
+        //Hepta = 7,
+        //Octa = 8,
     }
 }

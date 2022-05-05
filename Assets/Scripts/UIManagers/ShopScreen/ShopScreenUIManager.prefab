@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4632468ec739484eb5ff53d7bacbd06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: 48333f00b6741d046b29ba36594985ab, type: 2}
   slotForShowInfo: {fileID: 7170837777008920173, guid: 68026e34a7f9a554a8c7f0a759814028, type: 3}
-  gridForTowers: {fileID: 4880056616952857797}
+  gridForTowers: {fileID: 2465219157357216794}
   gameObjectPanel: {fileID: 6852417097778222967}

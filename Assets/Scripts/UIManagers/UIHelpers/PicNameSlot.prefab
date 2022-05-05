@@ -214,9 +214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61b9fb1a51a24557a60d84114ac9c628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentImage: {fileID: 0}
-  currentButton: {fileID: 0}
-  currentText: {fileID: 0}
+  currentImage: {fileID: 7374464685780126628}
+  currentButton: {fileID: 5826697789272863648}
+  currentText: {fileID: 7788535560330830426}
   lockPicture: {fileID: 0}
 --- !u!114 &3884230026077236125
 MonoBehaviour:

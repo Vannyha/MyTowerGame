@@ -44,7 +44,7 @@ namespace TowerModules
             
             for (int i = 0; i < containers.Count; i++)
             {
-                if (i <= modulePlaces.Count)
+                if (i < modulePlaces.Count)
                 {
                     TowerModule tempModule = Instantiate(database.GetTowerModuleByType(containers[i].TowerType),
                         modulePlaces[i].position, modulePlaces[i].rotation);
